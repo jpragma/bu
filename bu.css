@@ -1,0 +1,7 @@
+.progressive-drill-table> div {
+    border: 1px solid #cccccc;
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+}
