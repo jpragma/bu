@@ -19,10 +19,12 @@
 
 
 <body>
-    <div class="progressive-drill-table" ng-controller="ProgressiveDrillCtrl as ctrl" ng-init="ctrl.init()">
-        <div ng-repeat="shot in ctrl.shots track by $index">
-            {{shot}}
+    <div ng-controller="ProgressiveDrillTest">
+        <button ng-click="ctrl.afterShot(true)">Yes</button>
+        <button ng-click="ctrl.afterShot(false)">No</button>
+        <div progressive-drill num-of-shots="10" start-pos="4">
         </div>
+        <div>Score: {{ctrl.score}}</div>
     </div>
 </body>
 
