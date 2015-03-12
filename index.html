@@ -18,14 +18,23 @@
 </head>
 
 
-<body>
-    <div ng-controller="ProgressiveDrillTest">
+<body ng-controller="ProgressiveDrillTest">
+    <div>
         <button ng-click="ctrl.afterShot(true)">Yes</button>
         <button ng-click="ctrl.afterShot(false)">No</button>
         <div progressive-drill num-of-shots="10" start-pos="4">
         </div>
         <div>Score: {{ctrl.score}}</div>
     </div>
+
+    <hr/>
+
+    <span>{{drills[0].name}}</span><span>Score: {{drills[0].score}}</span>
+    <bu-drill num-of-shots="10" tries-per-shot="2" score="drills[0].score"></bu-drill>
+
+    <span>{{drills[1].name}}</span><span>Score: {{drills[1].score}}</span>
+    <bu-drill num-of-shots="10" tries-per-shot="1" score="drills[1].score"></bu-drill>
+
 </body>
 
 

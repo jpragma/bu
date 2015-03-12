@@ -1,9 +1,9 @@
-.progressive-drill-table td {
+.drill-table td {
     border: 1px solid #cccccc;
     width: 30px;
     line-height: 30px;
     text-align: center;
 }
-.progressive-drill-table td:first-child {
+.drill-table td:first-child {
     width: 80px;
 }

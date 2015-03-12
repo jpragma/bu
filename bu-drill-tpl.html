@@ -1,0 +1,16 @@
+<div>
+    <table class="drill-table">
+        <tr>
+            <td>{{shotTitle}}</td>
+            <td ng-repeat="s in range(numOfShots) track by $index" colspan="{{triesPerShot}}">{{$index + 1}}</td>
+        </tr>
+        <tr>
+            <td>{{successTitle}}</td>
+            <td ng-repeat="shot in shots track by $index" ng-style="getCellStyle(shot)" ng-click="markShot($index, true)">{{displayShot(shot)}}</td>
+        </tr>
+        <tr>
+            <td>{{failureTitle}}</td>
+            <td ng-repeat="shot in shots track by $index" ng-click="markShot($index, false)">{{displayShot(shot, true)}}</td>
+        </tr>
+    </table>
+</div>
