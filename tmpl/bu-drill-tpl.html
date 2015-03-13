@@ -6,7 +6,7 @@
         </tr>
         <tr>
             <td>{{successTitle}}</td>
-            <td ng-repeat="shot in shots track by $index" ng-style="getCellStyle(shot)" ng-click="markShot($index, true)">{{displayShot(shot)}}</td>
+            <td ng-repeat="shot in shots track by $index" ng-click="markShot($index, true)">{{displayShot(shot)}}</td>
         </tr>
         <tr>
             <td>{{failureTitle}}</td>

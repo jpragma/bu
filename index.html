@@ -13,6 +13,7 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="bu.js"></script>
+    <script src="directives/bu-progressive.js"></script>
     <script src="directives/bu-drill.js"></script>
     <link href="bu.css" rel="stylesheet"/>
 
@@ -40,21 +41,28 @@
 
         <tr>
             <td>{{drills[0].id}}</td>
-            <td>Potting</td>
-            <td><bu-drill num-of-shots="10" tries-per-shot="1" score="drills[0].score"></bu-drill></td>
+            <td>Cut</td>
+            <td><bu-progressive score="drills[0].score"></bu-progressive></td>
             <td>{{drills[0].score}}</td>
         </tr>
 
         <tr>
-            <td>{{drills[1].id}}</td>
+            <td>{{drills[5].id}}</td>
+            <td>Potting</td>
+            <td><bu-drill num-of-shots="10" tries-per-shot="1" score="drills[5].score"></bu-drill></td>
+            <td>{{drills[5].score}}</td>
+        </tr>
+
+        <tr>
+            <td>{{drills[6].id}}</td>
             <td>Wagon wheel</td>
-            <td><bu-drill num-of-shots="10" tries-per-shot="2" score="drills[1].score"></bu-drill></td>
-            <td>{{drills[1].score}}</td>
+            <td><bu-drill num-of-shots="10" tries-per-shot="2" score="drills[6].score"></bu-drill></td>
+            <td>{{drills[6].score}}</td>
         </tr>
 
         <tr>
             <td colspan="3">Total (max = 100)</td>
-            <td>{{totalScore}}</td>
+            <td>{{getTotalScore()}}</td>
         </tr>
     </table>
 

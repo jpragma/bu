@@ -3,9 +3,7 @@ buApp.directive('buDrill', [function () {
         restrict: 'EA',
         templateUrl: '../tmpl/bu-drill-tpl.html',
         replace: true,
-        transclude: true,
         scope: {
-            name: '@drillName',
             shotTitle: '@',
             successTitle: '@',
             failureTitle: '@',

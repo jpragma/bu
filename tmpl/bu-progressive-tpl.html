@@ -1,0 +1,15 @@
+<table class="drill-table">
+    <tr>
+        <td>Shot</td>
+        <td ng-repeat="shot in shots track by $index">{{$index + 1}}</td>
+    </tr>
+    <tr>
+        <td>Result</td>
+        <td ng-repeat="shot in shots track by $index" ng-click="markShot($index)">{{displayShot(shot)}}</td>
+    </tr>
+    <tr>
+        <td style="width: 100px">Next Position</td>
+        <td ng-repeat="shot in shots track by $index">{{shot.pos}}</td>
+    </tr>
+
+</table>
