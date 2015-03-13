@@ -7,3 +7,10 @@
 .drill-table td:first-child {
     width: 80px;
 }
+
+.exam-table > tbody > tr > td,th {
+    border: 2px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+
