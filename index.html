@@ -10,8 +10,11 @@
 
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="lib/ui-bootstrap-0.10.0.min.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.10.0.js"></script>
+
     <script src="bu.js"></script>
     <script src="directives/bu-progressive.js"></script>
     <script src="directives/bu-drill.js"></script>
@@ -21,16 +24,9 @@
 
 
 <body ng-controller="ProgressiveDrillTest">
-    <div>
-        <button ng-click="ctrl.afterShot(true)">Yes</button>
-        <button ng-click="ctrl.afterShot(false)">No</button>
-        <div progressive-drill num-of-shots="10" start-pos="4">
-        </div>
-        <div>Score: {{ctrl.score}}</div>
-    </div>
-
-    <hr/>
-
+    <div>BU Exam I - Fundamentals</div>
+    <label>Name:<input type="text" ng-model="studentName"></label>
+    <label>Date:<input type="text" datepicker-popup="yyyy-MM-dd" ng-model="examDate" show-weeks="false" show-button-bar="false"/></label>
     <table class="exam-table">
         <tr>
             <th>Drill</th>
@@ -39,11 +35,11 @@
             <th>Score</th>
         </tr>
 
-        <tr>
-            <td>{{drills[0].id}}</td>
-            <td>Cut</td>
-            <td><bu-progressive score="drills[0].score"></bu-progressive></td>
-            <td>{{drills[0].score}}</td>
+        <tr ng-repeat="drill in drills | filter:{type:'progressive'}">
+            <td>{{drill.id}}</td>
+            <td>{{drill.name}}</td>
+            <td><bu-progressive score="drill.score"></bu-progressive></td>
+            <td>{{drill.score}}</td>
         </tr>
 
         <tr>
