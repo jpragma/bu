@@ -24,9 +24,13 @@
 
 
 <body ng-controller="ProgressiveDrillTest">
-    <div>BU Exam I - Fundamentals</div>
-    <label>Name:<input type="text" ng-model="studentName"></label>
-    <label>Date:<input type="text" datepicker-popup="yyyy-MM-dd" ng-model="examDate" show-weeks="false" show-button-bar="false"/></label>
+    <h3>BU Exam I - Fundamentals</h3>
+    <div class="submitForm">
+        <label>Name:<input type="text" ng-model="studentName"></label>
+        <label>Date:<input type="text" datepicker-popup="yyyy-MM-dd" ng-model="examDate" show-weeks="false" show-button-bar="false"/></label>
+        <label>Video URL:<input type="text" ng-model="videoUrl" style="width: 300px"></label>
+        <button ng-click="submitResults()">Send</button>
+    </div>
     <table class="exam-table">
         <tr>
             <th>Drill</th>
@@ -61,6 +65,17 @@
             <td>{{getTotalScore()}}</td>
         </tr>
     </table>
+
+    <div>
+        <h3>Exam II Placement</h3>
+        <table class="exam2Placement">
+            <tr ng-repeat="p in level2Placement">
+                <td>{{p.level}}</td>
+                <td>{{p.minScore}}-{{p.maxScore}}</td>
+                <td>{{isYourPlacement(p) ? '\u2713' : ''}}</td>
+            </tr>
+        </table>
+    </div>
 
 </body>
 

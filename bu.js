@@ -11,6 +11,15 @@ buApp.controller('ProgressiveDrillTest', ['$scope', function($scope) {
         {id: 'F7', score: 0, type:'simple'},
         {id: 'F8', score: 0, type:'simple'}
     ];
+    $scope.level2Placement = [
+        {level: 'Bachelors', minScore: 0, maxScore: 49},
+        {level: 'Masters', minScore: 50, maxScore: 69},
+        {level: 'Doctorate', minScore: 70, maxScore: 100}
+    ];
+    $scope.isYourPlacement = function (placement) {
+        var score = $scope.getTotalScore();
+        return (score >= placement.minScore && score <= placement.maxScore);
+    };
     $scope.getTotalScore = function () {
         var result = 0;
         for (var i=0; i<$scope.drills.length; i++) {
@@ -18,5 +27,14 @@ buApp.controller('ProgressiveDrillTest', ['$scope', function($scope) {
         }
         return result;
     };
-
+    $scope.submitResults = function () {
+        var result = {name: $scope.studentName, date: $scope.examDate, video: $scope.videoUrl, drills: [], total: $scope.getTotalScore()};
+        for (var i=0; i<$scope.drills.length; i++) {
+            for (var i=0; i<$scope.drills.length; i++) {
+                result.drills.push({id: $scope.drills[i].id, score: $scope.drills[i].score});
+            }
+        }
+        var link = 'mailto:ilevin@jpragma.com?subject=BU Exam I&body=' + JSON.stringify(result);
+        window.location.href = link;
+    };
 }]);

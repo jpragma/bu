@@ -14,3 +14,12 @@
     text-align: center;
 }
 
+.exam2Placement td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+}
+
+.submitForm input {
+    margin-left: 10px;
+    margin-right: 10px;
+}
