@@ -39,6 +39,9 @@ buApp.directive('buBoolean', [function () {
             };
 
             scope.markShot = function (index, success) {
+                if (index > 0 && scope.shots[index-1] == null) {
+                    return; // Previous shot is not marked yet
+                }
                 scope.shots[index] = (success) ? 1 : 0;
                 scope.recalcScore();
             };
