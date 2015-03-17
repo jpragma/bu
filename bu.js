@@ -4,12 +4,13 @@ buApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.when('/home', {templateUrl: 'views/home.html'}).
             when('/exam1', {templateUrl: 'views/exam1.html'}).
+            when('/exam2b', {templateUrl: 'views/exam2b.html'}).
             otherwise({redirectTo: '/home'});
     }
 ]);
 
 
-buApp.controller('ProgressiveDrillTest', ['$scope', function($scope) {
+buApp.controller('exam1Controller', ['$scope', function($scope) {
     $scope.drills = [
         {id: 'F1', name: 'Cut', score: 0, type:'progressive'},
         {id: 'F2', name: 'Stop', score: 0, type:'progressive'},
@@ -46,4 +47,9 @@ buApp.controller('ProgressiveDrillTest', ['$scope', function($scope) {
         var link = 'mailto:ilevin@jpragma.com?subject=BU Exam I&body=' + JSON.stringify(result);
         window.location.href = link;
     };
+}]);
+
+buApp.controller('exam2bController', ['$scope', function ($scope) {
+    $scope.drill1Score = 0;
+    $scope.drill2Score = 0;
 }]);

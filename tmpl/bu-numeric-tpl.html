@@ -1,0 +1,14 @@
+<div>
+    <table class="drill-table">
+        <tr>
+            <td>{{title}}</td>
+            <td ng-repeat="a in attempts track by $index">{{$index + 1}}</td>
+        </tr>
+        <tr>
+            <td class="wideCell">{{resultTitle}}</td>
+            <td ng-repeat="a in attempts track by $index">
+                <input type="number" min="0" max="{{maxPerAttempt}}" ng-model="attempts[$index]">
+            </td>
+        </tr>
+    </table>
+</div>

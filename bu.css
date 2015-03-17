@@ -7,6 +7,13 @@
 .drill-table td:first-child {
     width: 80px;
 }
+.wideCell {
+    width: 120px !important;
+}
+.drill-table input[type=number] {
+    text-align: center;
+    width: 40px;
+}
 
 .exam-table > tbody > tr > td, .exam-table > tbody > tr > th {
     border: 2px solid #000;
