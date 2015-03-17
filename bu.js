@@ -1,4 +1,13 @@
-var buApp = angular.module('buApp', ['ui.bootstrap']);
+var buApp = angular.module('buApp', ['ngRoute', 'ui.bootstrap']);
+
+buApp.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.when('/home', {templateUrl: 'views/home.html'}).
+            when('/exam1', {templateUrl: 'views/exam1.html'}).
+            otherwise({redirectTo: '/home'});
+    }
+]);
+
 
 buApp.controller('ProgressiveDrillTest', ['$scope', function($scope) {
     $scope.drills = [

@@ -12,6 +12,7 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
     <script src="lib/ui-bootstrap-0.10.0.min.js"></script>
     <script src="lib/ui-bootstrap-tpls-0.10.0.js"></script>
 
@@ -23,59 +24,7 @@
 </head>
 
 
-<body ng-controller="ProgressiveDrillTest">
-    <h3>BU Exam I - Fundamentals</h3>
-    <div class="submitForm">
-        <label>Name:<input type="text" ng-model="studentName"></label>
-        <label>Date:<input type="text" datepicker-popup="yyyy-MM-dd" ng-model="examDate" show-weeks="false" show-button-bar="false"/></label>
-        <label>Video URL:<input type="text" ng-model="videoUrl" style="width: 300px"></label>
-        <button ng-click="submitResults()">Send</button>
-    </div>
-    <table class="exam-table">
-        <tr>
-            <th>Drill</th>
-            <th>Topic</th>
-            <th>Results</th>
-            <th>Score</th>
-        </tr>
-
-        <tr ng-repeat="drill in drills | filter:{type:'progressive'}">
-            <td>{{drill.id}}</td>
-            <td>{{drill.name}}</td>
-            <td><bu-progressive score="drill.score"></bu-progressive></td>
-            <td>{{drill.score}}</td>
-        </tr>
-
-        <tr>
-            <td>{{drills[5].id}}</td>
-            <td>Potting</td>
-            <td><bu-drill num-of-shots="10" tries-per-shot="1" score="drills[5].score"></bu-drill></td>
-            <td>{{drills[5].score}}</td>
-        </tr>
-
-        <tr>
-            <td>{{drills[6].id}}</td>
-            <td>Wagon wheel</td>
-            <td><bu-drill num-of-shots="10" tries-per-shot="2" score="drills[6].score"></bu-drill></td>
-            <td>{{drills[6].score}}</td>
-        </tr>
-
-        <tr>
-            <td colspan="3">Total (max = 100)</td>
-            <td>{{getTotalScore()}}</td>
-        </tr>
-    </table>
-
-    <div>
-        <h3>Exam II Placement</h3>
-        <table class="exam2Placement">
-            <tr ng-repeat="p in level2Placement">
-                <td>{{p.level}}</td>
-                <td>{{p.minScore}}-{{p.maxScore}}</td>
-                <td>{{isYourPlacement(p) ? '\u2713' : ''}}</td>
-            </tr>
-        </table>
-    </div>
+<body ng-view>
 
 </body>
 
