@@ -1,0 +1,65 @@
+<div ng-controller="exam2Controller">
+    <h3>BU Exam II - Skills</h3>
+    <div class="submitForm">
+        <label>Date:<input type="text" datepicker-popup="yyyy-MM-dd" ng-model="examDate" show-weeks="false" show-button-bar="false"/></label>
+        <label>Video URL:<input type="text" ng-model="videoUrl" style="width: 300px"></label>
+        <button ng-click="saveResults()">Save</button>
+    </div>
+    <span>Level: {{level}}</span>
+    <table class="exam-table">
+        <tr>
+            <th>Drill</th>
+            <th>Topic</th>
+            <th>Results</th>
+            <th>Max score</th>
+            <th>Score</th>
+        </tr>
+        <tr>
+            <td>{{drills[0].id}}</td>
+            <td>Line</td>
+            <td><bu-numeric score="drills[0].score" max-score="{{drills[0].maxScore[level]}}" num-of-attempts="2" sum-type="max" sum-number="1"></bu-numeric></td>
+            <td>{{drills[0].maxScore[level]}}</td>
+            <td>{{drills[0].score}}</td>
+        </tr>
+        <tr>
+            <td>{{drills[1].id}}</td>
+            <td>Rail</td>
+            <td><bu-numeric score="drills[1].score" max-score="{{drills[1].maxScore[level]}}" num-of-attempts="2" sum-type="max" sum-number="1"></bu-numeric></td>
+            <td>{{drills[1].maxScore[level]}}</td>
+            <td>{{drills[1].score}}</td>
+        </tr>
+        <tr>
+            <td>{{drills[2].id}}</td>
+            <td>9-Ball</td>
+            <td>
+                <bu-numeric score="drills[2].score" max-score="{{drills[2].maxScore[level]}}" num-of-attempts="3" sum-type="min" sum-number="2" title="Layout"></bu-numeric>
+            </td>
+            <td>{{drills[2].maxScore[level]}}</td>
+            <td>{{drills[2].score}}</td>
+        </tr>
+        <tr>
+            <td>{{drills[3].id}}</td>
+            <td>8-Ball</td>
+            <td><bu-numeric score="drills[3].score" max-score="{{drills[3].maxScore[level]}}" num-of-attempts="3" sum-type="min" sum-number="2" title="Layout"></bu-numeric></td>
+            <td>{{drills[3].maxScore[level]}}</td>
+            <td>{{drills[3].score}}</td>
+        </tr>
+
+        <tr>
+            <td>{{drills[4].id}}</td>
+            <td>Safe</td>
+            <td><bu-boolean num-of-shots="{{drills[4].numOfShots[level]}}" tries-per-shot="2" score="drills[4].score"></bu-boolean></td>
+            <td>{{drills[4].numOfShots[level] * 2}}</td>
+            <td>{{drills[4].score}}</td>
+        </tr>
+
+        <tr ng-repeat="s in ['Kick', 'Bank', 'Elevated', 'Jump/Masse']">
+            <td>{{drills[5 + $index].id}}</td>
+            <td>{{s}}</td>
+            <td><bu-boolean num-of-shots="{{drills[5+$index].numOfShots[level]}}" tries-per-shot="1" score="drills[5+$index].score"></bu-boolean></td>
+            <td>{{drills[5+$index].numOfShots[level]}}</td>
+            <td>{{drills[5+$index].score}}</td>
+        </tr>
+
+    </table>
+</div>

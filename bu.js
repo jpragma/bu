@@ -4,7 +4,7 @@ buApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.when('/home', {templateUrl: 'views/home.html'}).
             when('/exam1', {templateUrl: 'views/exam1.html'}).
-            when('/exam2b', {templateUrl: 'views/exam2b.html'}).
+            when('/exam2', {templateUrl: 'views/exam2.html'}).
             otherwise({redirectTo: '/home'});
     }
 ]);
@@ -49,7 +49,19 @@ buApp.controller('exam1Controller', ['$scope', function($scope) {
     };
 }]);
 
-buApp.controller('exam2bController', ['$scope', function ($scope) {
-    $scope.drill1Score = 0;
-    $scope.drill2Score = 0;
+buApp.controller('exam2Controller', ['$scope', function ($scope) {
+    $scope.level = 0;
+    $scope.drills = [
+        {id: 'S1', score: 0, maxScore: [4, 7, 10]},
+        {id: 'S2', score: 0, maxScore: [7, 11, 15]},
+        {id: 'S3', score: 0, maxScore: [10, 12, 14]},
+        {id: 'S4', score: 0, maxScore: [10, 12, 14]},
+        {id: 'S5', score: 0, numOfShots: [3, 5, 7]},
+        {id: 'S6', score: 0, numOfShots: [3, 5, 7]},
+        {id: 'S7', score: 0, numOfShots: [3, 5, 7]},
+        {id: 'S8', score: 0, numOfShots: [3, 5, 7]},
+        {id: 'S9', score: 0, numOfShots: [3, 5, 7]},
+        {id: 'S10', score: 0}
+    ];
+
 }]);
