@@ -1,0 +1,20 @@
+<div>
+    <table class="drill-table">
+        <tr>
+            <td>Attempt</td>
+            <td ng-repeat="a in attempts track by $index">{{$index + 1}}</td>
+        </tr>
+        <tr>
+            <td>Points</td>
+            <td ng-repeat="a in attempts track by $index">
+                <table>
+                    <tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+                    <tr>
+                        <td ng-repeat="s in a track by $index" ng-click="markPoint(a, $index)" style="min-width: 30px">{{displayPoint(s)}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+</div>
