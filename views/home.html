@@ -1,3 +1,83 @@
-<h3>BU</h3>
-<a href="#/exam1">Exam 1</a>
-<a href="#/exam2">Exam 2</a>
+<div ng-controller="homeController" ng-init="load()">
+    <h3>BU</h3>
+    <div>
+        <span>Take exam:</span>
+        <select ng-model="examUrl" ng-options="e.url as e.name for e in exams">
+            <option value="">-- Select --</option>
+        </select>
+        <button ng-click="takeExam()">Go</button>
+    </div>
+    <hr/>
+    <h3>History</h3>
+    <div>
+        <button ng-click="deleteAll()">Delete All</button>
+    </div>
+    <tabset>
+    <tab heading="Exam I">
+    <table class="result-table">
+        <tr>
+            <th>Date</th>
+            <th>Cuts</th>
+            <th>Stop</th>
+            <th>Follow</th>
+            <th>Draw</th>
+            <th>Stan</th>
+            <th>Potting</th>
+            <th>Wagon</th>
+            <th>Targets</th>
+            <th>Total Score</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="h in history | filter: {type:'exam1'}">
+            <td>{{h.date | date}}</td>
+            <td>{{getDrillScore(h.drills, 'f1')}}</td>
+            <td>{{getDrillScore(h.drills, 'f2')}}</td>
+            <td>{{getDrillScore(h.drills, 'f3')}}</td>
+            <td>{{getDrillScore(h.drills, 'f4')}}</td>
+            <td>{{getDrillScore(h.drills, 'f5')}}</td>
+            <td>{{getDrillScore(h.drills, 'f6')}}</td>
+            <td>{{getDrillScore(h.drills, 'f7')}}</td>
+            <td>{{getDrillScore(h.drills, 'f8')}}</td>
+            <td>{{h.totalScore}}</td>
+            <td><a href="" ng-click="delete(h.key)">Delete</a></td>
+        </tr>
+    </table>
+    </tab>
+    <tab heading="Exam II">
+    <table class="result-table">
+        <tr>
+            <th>Date</th>
+            <th>Level</th>
+            <th>Line</th>
+            <th>Rail</th>
+            <th>9-Ball</th>
+            <th>8-Ball</th>
+            <th>Safe</th>
+            <th>Kick</th>
+            <th>Bank</th>
+            <th>Elevated</th>
+            <th>Jump/Masse</th>
+            <th>Break</th>
+            <th>Total Score</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="h in history  | filter: {type:'exam2'}">
+            <td>{{h.date | date}}</td>
+            <td>{{getLevelName(h.level)}}</td>
+            <td>{{getDrillScore(h.drills, 's1')}}</td>
+            <td>{{getDrillScore(h.drills, 's2')}}</td>
+            <td>{{getDrillScore(h.drills, 's3')}}</td>
+            <td>{{getDrillScore(h.drills, 's4')}}</td>
+            <td>{{getDrillScore(h.drills, 's5')}}</td>
+            <td>{{getDrillScore(h.drills, 's6')}}</td>
+            <td>{{getDrillScore(h.drills, 's7')}}</td>
+            <td>{{getDrillScore(h.drills, 's8')}}</td>
+            <td>{{getDrillScore(h.drills, 's9')}}</td>
+            <td>{{getDrillScore(h.drills, 's10')}}</td>
+            <td>{{h.totalScore}}</td>
+            <td><a href="" ng-click="delete(h.key)">Delete</a></td>
+        </tr>
+    </table>
+    </tab>
+    </tabset>
+</div>

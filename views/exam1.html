@@ -1,10 +1,7 @@
 <div ng-controller="exam1Controller">
     <h3>BU Exam I - Fundamentals</h3>
-    <div class="submitForm">
-        <label>Name:<input type="text" ng-model="studentName"></label>
-        <label>Date:<input type="text" datepicker-popup="yyyy-MM-dd" ng-model="examDate" show-weeks="false" show-button-bar="false"/></label>
-        <label>Video URL:<input type="text" ng-model="videoUrl" style="width: 300px"></label>
-        <button ng-click="submitResults()">Send</button>
+    <div class="examHeader">
+        <span>Date: {{examDate.toISOString().slice(0,10)}}</span>
     </div>
     <table class="exam-table">
         <tr>
@@ -23,33 +20,38 @@
 
         <tr>
             <td>{{drills[5].id}}</td>
-            <td>Potting</td>
+            <td>{{drills[5].name}}</td> <!--Potting-->
             <td><bu-boolean num-of-shots="10" tries-per-shot="1" score="drills[5].score"></bu-boolean></td>
             <td>{{drills[5].score}}</td>
         </tr>
 
         <tr>
             <td>{{drills[6].id}}</td>
-            <td>Wagon wheel</td>
+            <td>{{drills[6].name}}</td> <!--Wagon wheel-->
             <td><bu-boolean num-of-shots="10" tries-per-shot="2" score="drills[6].score"></bu-boolean></td>
             <td>{{drills[6].score}}</td>
+        </tr>
+
+        <tr>
+            <td>{{drills[7].id}}</td>
+            <td>{{drills[7].name}}</td> <!--Target-->
+            <td><bu-boolean num-of-shots="5" tries-per-shot="4" score="drills[7].score"></bu-boolean></td>
+            <td>{{drills[7].score}}</td>
         </tr>
 
         <tr>
             <td colspan="3">Total (max = 100)</td>
             <td>{{getTotalScore()}}</td>
         </tr>
+        <tr>
+            <td colspan="4">Exam II Placement - {{exam2Level()}}</td>
+        </tr>
     </table>
 
-    <div>
-        <h3>Exam II Placement</h3>
-        <table class="exam2Placement">
-            <tr ng-repeat="p in level2Placement">
-                <td>{{p.level}}</td>
-                <td>{{p.minScore}}-{{p.maxScore}}</td>
-                <td>{{isYourPlacement(p) ? '\u2713' : ''}}</td>
-            </tr>
-        </table>
+    <div style="vertical-align: top">
+        <textarea cols="20" rows="3" ng-model="notes"></textarea>
+        <button ng-click="saveResults()">Save</button>
     </div>
+
 
 </div>
