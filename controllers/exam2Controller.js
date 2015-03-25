@@ -23,7 +23,7 @@ buApp.controller('exam2Controller', ['$scope', '$routeParams', '$location', 'sto
         return result;
     };
     $scope.saveResults = function () {
-        storage.store({date:$scope.examDate, type: 'exam2', level: $scope.level, drills:$scope.drills, totalScore: $scope.getTotalScore()});
+        storage.store({date:$scope.examDate, type: 'exam2', level: $scope.level, drills:$scope.drills, totalScore: $scope.getTotalScore(), notes: $scope.notes});
         $location.path('/');
     };
 

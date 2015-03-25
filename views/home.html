@@ -9,9 +9,6 @@
     </div>
     <hr/>
     <h3>History</h3>
-    <div>
-        <button ng-click="deleteAll()">Delete All</button>
-    </div>
     <tabset>
     <tab heading="Exam I">
     <table class="result-table">
@@ -26,6 +23,7 @@
             <th>Wagon</th>
             <th>Targets</th>
             <th>Total Score</th>
+            <th>Notes</th>
             <th>Action</th>
         </tr>
         <tr ng-repeat="h in history | filter: {type:'exam1'}">
@@ -39,6 +37,7 @@
             <td>{{getDrillScore(h.drills, 'f7')}}</td>
             <td>{{getDrillScore(h.drills, 'f8')}}</td>
             <td>{{h.totalScore}}</td>
+            <td>{{h.notes}}</td>
             <td><a href="" ng-click="delete(h.key)">Delete</a></td>
         </tr>
     </table>
@@ -59,6 +58,7 @@
             <th>Jump/Masse</th>
             <th>Break</th>
             <th>Total Score</th>
+            <th>Notes</th>
             <th>Action</th>
         </tr>
         <tr ng-repeat="h in history  | filter: {type:'exam2'}">
@@ -75,9 +75,14 @@
             <td>{{getDrillScore(h.drills, 's9')}}</td>
             <td>{{getDrillScore(h.drills, 's10')}}</td>
             <td>{{h.totalScore}}</td>
+            <td>{{h.notes}}</td>
             <td><a href="" ng-click="delete(h.key)">Delete</a></td>
         </tr>
     </table>
     </tab>
     </tabset>
+    <div>
+        <a href="" ng-click="deleteAll()" ng-show="history.length > 0">Clear All Results</a>
+    </div>
+
 </div>

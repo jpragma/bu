@@ -31,7 +31,7 @@ buApp.controller('exam1Controller', ['$scope', '$location', 'storage', function(
         return result;
     };
     $scope.saveResults = function () {
-        storage.store({date:$scope.examDate, type: 'exam1', drills:$scope.drills, totalScore: $scope.getTotalScore()});
+        storage.store({date:$scope.examDate, type: 'exam1', drills:$scope.drills, totalScore: $scope.getTotalScore(), notes: $scope.notes});
         $location.path('/');
     };
 }]);

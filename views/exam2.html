@@ -70,5 +70,9 @@
             <td>{{getTotalScore()}}</td>
         </tr>
     </table>
-    <button ng-click="saveResults()">Save</button>
+    <div class="examFooter">
+        <span>Notes:</span>
+        <input type="text" ng-model="notes" style="width: 300px">
+        <button ng-click="saveResults()">Save</button>
+    </div>
 </div>
