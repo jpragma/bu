@@ -1,7 +1,7 @@
 buApp.directive('buNumeric', [function () {
     return {
         restrict: 'EA',
-        templateUrl: '../tmpl/bu-numeric-tpl.html',
+        templateUrl: 'tmpl/bu-numeric-tpl.html',
         replace: true,
         scope: {
             title: '@',

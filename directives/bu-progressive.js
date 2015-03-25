@@ -1,7 +1,7 @@
 buApp.directive('buProgressive', [function () {
     return {
         restrict: 'EA',
-        templateUrl: '../tmpl/bu-progressive-tpl.html',
+        templateUrl: 'tmpl/bu-progressive-tpl.html',
         replace: true,
         scope: {
             startPos: '@',

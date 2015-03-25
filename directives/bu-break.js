@@ -1,7 +1,7 @@
 buApp.directive('buBreak', [function () {
     return {
         restrict: 'EA',
-        templateUrl: '../tmpl/bu-break-tpl.html',
+        templateUrl: 'tmpl/bu-break-tpl.html',
         replace: true,
         scope: {
             numOfAttempts: '@',

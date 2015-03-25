@@ -1,7 +1,7 @@
 buApp.directive('buBoolean', [function () {
     return {
         restrict: 'EA',
-        templateUrl: '../tmpl/bu-boolean-tpl.html',
+        templateUrl: 'tmpl/bu-boolean-tpl.html',
         replace: true,
         scope: {
             shotTitle: '@',
