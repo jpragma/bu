@@ -9,11 +9,17 @@
     </div>
     <hr/>
     <h3>History</h3>
+    <div>
+        <a href="" ng-click="deleteSelected()" ng-show="history.length > 0">Clear</a>
+        <a href="" ng-click="deleteAll()" ng-show="history.length > 0">Clear All</a>
+    </div>
+
     <tabset>
     <tab heading="Exam I">
     <table class="result-table">
         <tr>
-            <th>Date</th>
+            <th></th>
+            <th>Date/Time</th>
             <th>Cuts</th>
             <th>Stop</th>
             <th>Follow</th>
@@ -24,10 +30,10 @@
             <th>Targets</th>
             <th>Total Score</th>
             <th>Notes</th>
-            <th>Action</th>
         </tr>
         <tr ng-repeat="h in history | filter: {type:'exam1'}">
-            <td>{{h.date | date}}</td>
+            <td><input type="checkbox" value="{{h.key}}" ng-checked="inSelection(h.key)" ng-click="toggleSelection(h.key)"></td>
+            <td>{{h.date | date:'yyyy-MM-dd HH:mm'}}</td>
             <td>{{getDrillScore(h.drills, 'f1')}}</td>
             <td>{{getDrillScore(h.drills, 'f2')}}</td>
             <td>{{getDrillScore(h.drills, 'f3')}}</td>
@@ -38,14 +44,14 @@
             <td>{{getDrillScore(h.drills, 'f8')}}</td>
             <td>{{h.totalScore}}</td>
             <td>{{h.notes}}</td>
-            <td><a href="" ng-click="delete(h.key)">Delete</a></td>
         </tr>
     </table>
     </tab>
     <tab heading="Exam II">
     <table class="result-table">
         <tr>
-            <th>Date</th>
+            <th></th>
+            <th>Date/Time</th>
             <th>Level</th>
             <th>Line</th>
             <th>Rail</th>
@@ -59,10 +65,10 @@
             <th>Break</th>
             <th>Total Score</th>
             <th>Notes</th>
-            <th>Action</th>
         </tr>
         <tr ng-repeat="h in history  | filter: {type:'exam2'}">
-            <td>{{h.date | date}}</td>
+            <td><input type="checkbox" value="{{h.key}}" ng-checked="inSelection(h.key)" ng-click="toggleSelection(h.key)"></td>
+            <td>{{h.date | date:'yyyy-MM-dd HH:mm'}}</td>
             <td>{{getLevelName(h.level)}}</td>
             <td>{{getDrillScore(h.drills, 's1')}}</td>
             <td>{{getDrillScore(h.drills, 's2')}}</td>
@@ -76,13 +82,9 @@
             <td>{{getDrillScore(h.drills, 's10')}}</td>
             <td>{{h.totalScore}}</td>
             <td>{{h.notes}}</td>
-            <td><a href="" ng-click="delete(h.key)">Delete</a></td>
         </tr>
     </table>
     </tab>
     </tabset>
-    <div>
-        <a href="" ng-click="deleteAll()" ng-show="history.length > 0">Clear All Results</a>
-    </div>
 
 </div>

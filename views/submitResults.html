@@ -1,0 +1,59 @@
+<div ng-controller="submitResultsController" ng-init="init()">
+
+    <table class="final-result-table">
+        <tr>
+            <th>Type</th>
+            <th>Score</th>
+            <th>Video Link</th>
+        </tr>
+        <tr ng-repeat="r in results">
+            <td>{{r.type}}</td>
+            <td>{{r.totalScore}}</td>
+            <td><input type="text" ng-model="r.video" class="video"></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>{{totalScore}}</td>
+            <td></td>
+        </tr>
+    </table>
+    <h3>Table</h3>
+    <table class="tableSpec">
+        <tr>
+            <td>Size</td>
+            <td>
+                <input type="radio" ng-model="table.size" value="7" ng-change="calcDiploma()">7 foot
+                <input type="radio" ng-model="table.size" value="8" ng-change="calcDiploma()">8 foot
+                <input type="radio" ng-model="table.size" value="9" ng-change="calcDiploma()">9 foot or bigger
+            </td>
+        </tr>
+        <tr>
+            <td>Pocket mouth size</td>
+            <td><input type="text" ng-model="table.mouth"></td>
+        </tr>
+        <tr>
+            <td>Pocket throat size</td>
+            <td><input type="text" ng-model="table.throat"></td>
+        </tr>
+        <tr>
+            <td>Shelf depth</td>
+            <td><input type="text" ng-model="table.shelf"></td>
+        </tr>
+        <tr>
+            <td>Video link</td>
+            <td><input type="text" ng-model="table.video" class="video"></td>
+        </tr>
+    </table>
+
+    <div class="diploma">Your diploma: <span>{{diploma.name}}</span></div>
+    <div style="margin-bottom: 15px;">
+        <span>Your name:</span>
+        <input type="text" ng-model="studentName" style="width: 300px">
+    </div>
+    <div>
+        <input type="checkbox" ng-model="listed"> Include the results and data in the official alumni list on the BU website
+    </div>
+    <div>
+        <button ng-show="diploma.minScore>0">Submit application</button>
+    </div>
+</div>
