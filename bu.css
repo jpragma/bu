@@ -5,8 +5,12 @@
 .drill-table td {
     border: 1px solid #cccccc;
     width: 30px;
+    min-width: 30px;
     line-height: 30px;
     text-align: center;
+}
+.drill-table td[ng-click] {
+    cursor: pointer;
 }
 .drill-table td:first-child {
     width: 80px;

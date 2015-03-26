@@ -1,7 +1,7 @@
 <div ng-controller="exam1Controller">
     <h3>BU Exam I - Fundamentals</h3>
     <div class="examHeader">
-        <span>Date: {{examDate.toISOString().slice(0,10)}}</span>
+        <span>Date: {{examDate | date}}</span>
     </div>
     <table class="exam-table">
         <tr>
