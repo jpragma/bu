@@ -1,4 +1,4 @@
-buApp.controller('homeController', ['$scope', '$location', 'storage', 'shared', function($scope, $location, storage, shared) {
+buApp.controller('homeController', ['$scope', '$location', 'storage', function($scope, $location, storage) {
 
     $scope.exams = [
         {name: 'Exam I', url: '/exam1'},
@@ -20,6 +20,7 @@ buApp.controller('homeController', ['$scope', '$location', 'storage', 'shared', 
         }
         $scope.history = history;
         $scope.selection = [];
+        $scope.calcDiploma();
     };
     $scope.getDrillScore = function (drills, id) {
         for (var i=0; i<drills.length; i++) {
@@ -27,6 +28,16 @@ buApp.controller('homeController', ['$scope', '$location', 'storage', 'shared', 
                 return drills[i].score;
             }
         }
+    };
+    $scope.getBestScore = function (type) {
+        var score = 0;
+        for (var i=0; i<$scope.history.length; i++) {
+            var h = $scope.history[i];
+            if (h.type == type) {
+                score = Math.max(score, h.totalScore);
+            }
+        }
+        return score;
     };
     $scope.getLevelName = function (level) {
         return buApp.exam2levels[level];
@@ -60,23 +71,26 @@ buApp.controller('homeController', ['$scope', '$location', 'storage', 'shared', 
             $scope.load();
         }
     };
-    $scope.getSelectedResults = function () {
-        var results = [];
-        for (var i=0; i<$scope.history.length; i++) {
-            if ($scope.inSelection($scope.history[i].key)) {
-                results.push($scope.history[i]);
+    $scope.calcDiploma = function () {
+        var  diplomaTable = [
+            {minScore: 55, name: 'Bachelor of Pool'},
+            {minScore: 85, name: 'Bachelor of Pool with Honors'},
+            {minScore: 100, name: 'Master of Pool'},
+            {minScore: 125, name: 'Master of Pool with Honors'},
+            {minScore: 140, name: 'Doctorate of Pool'},
+            {minScore: 180, name: 'Doctorate of Pool with Honors'}
+        ];
+        var combinedScore = $scope.getBestScore('exam1') + $scope.getBestScore('exam2');
+        var idx = -1;
+        for (var i=diplomaTable.length-1; i>=0; i--) {
+            if (combinedScore >= diplomaTable[i].minScore) {
+                idx = i;
+                break;
             }
         }
-        return results;
-    };
-    $scope.submitSelected = function () {
-        var selectedResults = $scope.getSelectedResults();
-        if (selectedResults.length != 2 || selectedResults[0].type == selectedResults[1].type) {
-            alert("Please select a single pair of Exam I and Exam II to submit");
-            return false;
-        }
-        shared.resultsToSubmit = selectedResults;
-        $location.path('/submitResults');
+        $scope.bestScore = combinedScore;
+        if (idx >= 0)
+            $scope.diploma = diplomaTable[idx].name;
     };
 }]);
 

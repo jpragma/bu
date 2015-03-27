@@ -27,7 +27,6 @@ buApp.config(['$routeProvider',
         $routeProvider.when('/home', {templateUrl: 'views/home.html'}).
             when('/exam1', {templateUrl: 'views/exam1.html'}).
             when('/exam2/:level?', {templateUrl: 'views/exam2.html'}).
-            when('/submitResults', {templateUrl: 'views/submitResults.html'}).
             otherwise({redirectTo: '/home'});
     }
 ]);
@@ -59,8 +58,4 @@ buApp.factory('storage', ['localStorageService', function (storage) {
     }
 }]);
 buApp.exam2levels = ['Bachelors', 'Masters', 'Doctorate'];
-buApp.factory('shared', function () {
-    return {
-        resultsToSubmit: []
-    };
-});
+

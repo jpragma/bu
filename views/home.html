@@ -8,10 +8,18 @@
         <button ng-click="takeExam()">Go</button>
     </div>
     <hr/>
+    <div ng-show="diploma" class="diploma">
+        You have earned diploma: <span>{{diploma}}</span>
+        <a href="http://www.billiarduniversity.org/diploma.html">Apply</a>
+        <hr/>
+    </div>
     <h3>History</h3>
     <div>
         <a href="" ng-click="deleteSelected()" ng-show="history.length > 0">Clear</a>
         <a href="" ng-click="deleteAll()" ng-show="history.length > 0">Clear All</a>
+    </div>
+    <div style="margin-bottom: 10px">
+        Best combined score is {{bestScore}}
     </div>
 
     <tabset>
