@@ -1,8 +1,11 @@
 buApp.controller('exam1Controller', ['$scope', '$location', 'storage', 'shared', function($scope, $location, storage, shared) {
-    $scope.examDate = new Date().getTime();
     if (shared.examData) {
-        $scope.drills = shared.examData;
+        $scope.examDate = shared.examData.date;
+        $scope.drills = shared.examData.drills;
+        $scope.notes = shared.examData.notes;
+        $scope.key = shared.examData.key;
     } else {
+        $scope.examDate = new Date().getTime();
         $scope.drills = [
             {id: 'F1', name: 'Cut', score: 0, data: null, type: 'progressive'},
             {id: 'F2', name: 'Stop', score: 0, data: null, type: 'progressive'},
@@ -35,7 +38,7 @@ buApp.controller('exam1Controller', ['$scope', '$location', 'storage', 'shared',
         return result;
     };
     $scope.saveResults = function () {
-        storage.store({date:$scope.examDate, type: 'exam1', drills:$scope.drills, totalScore: $scope.getTotalScore(), notes: $scope.notes});
+        storage.store({key: $scope.key, date:$scope.examDate, type: 'exam1', drills:$scope.drills, totalScore: $scope.getTotalScore(), notes: $scope.notes});
         $location.path('/');
     };
 }]);

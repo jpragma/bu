@@ -30,11 +30,11 @@ buApp.controller('homeController', ['$scope', '$location', 'storage', 'shared', 
             }
         }
     };
-    $scope.editExam = function (type, level, drills) {
-        shared.examData = drills;
+    $scope.editExam = function (examData) {
+        shared.examData = examData;
         var url = $scope.exams[0].url;
-        if (type == 'exam2') {
-            url = $scope.exams[1+$scope.$eval(level)].url;
+        if (examData.type == 'exam2') {
+            url = $scope.exams[1+$scope.$eval(examData.level)].url;
         }
         $location.path(url);
     };

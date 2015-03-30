@@ -1,11 +1,14 @@
 buApp.controller('exam2Controller', ['$scope', '$routeParams', '$location', 'storage', 'shared', function ($scope, $routeParams, $location, storage, shared) {
-    $scope.examDate = new Date().getTime();
     $scope.level = $routeParams.level;
     $scope.maxScore = [54, 77, 100];
     $scope.levelName = buApp.exam2levels[$routeParams.level];
     if (shared.examData) {
-        $scope.drills = shared.examData;
+        $scope.examDate = shared.examData.date;
+        $scope.drills = shared.examData.drills;
+        $scope.notes = shared.examData.notes;
+        $scope.key = shared.examData.key;
     } else {
+        $scope.examDate = new Date().getTime();
         $scope.drills = [
             {id: 'S1', name: 'Line', score: 0, data: null, maxScore: [4, 7, 10]},
             {id: 'S2', name: 'Rail', score: 0, data: null, maxScore: [7, 11, 15]},
@@ -27,7 +30,7 @@ buApp.controller('exam2Controller', ['$scope', '$routeParams', '$location', 'sto
         return result;
     };
     $scope.saveResults = function () {
-        storage.store({date:$scope.examDate, type: 'exam2', level: $scope.level, drills:$scope.drills, totalScore: $scope.getTotalScore(), notes: $scope.notes});
+        storage.store({key: $scope.key, date:$scope.examDate, type: 'exam2', level: $scope.level, drills:$scope.drills, totalScore: $scope.getTotalScore(), notes: $scope.notes});
         $location.path('/');
     };
 

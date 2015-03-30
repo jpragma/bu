@@ -36,7 +36,7 @@ buApp.config(function (localStorageServiceProvider) {
 buApp.factory('storage', ['localStorageService', function (storage) {
     return {
         store: function (examData) {
-            var key = guid();
+            var key = examData.key || guid();
             var saved = storage.set(key, toJsonString(examData));
             console.log("Data saved: " + saved);
         },
