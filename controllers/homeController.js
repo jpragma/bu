@@ -1,4 +1,4 @@
-buApp.controller('homeController', ['$scope', '$location', 'storage', function($scope, $location, storage) {
+buApp.controller('homeController', ['$scope', '$location', 'storage', 'shared', function($scope, $location, storage, shared) {
 
     $scope.exams = [
         {name: 'Exam I', url: '/exam1'},
@@ -7,6 +7,7 @@ buApp.controller('homeController', ['$scope', '$location', 'storage', function($
         {name: 'Exam II Doctorate', url: '/exam2/2'}
     ];
     $scope.takeExam = function() {
+        shared.examData = null;
         $location.path($scope.examUrl);
     };
     $scope.load = function () {
@@ -28,6 +29,14 @@ buApp.controller('homeController', ['$scope', '$location', 'storage', function($
                 return drills[i].score;
             }
         }
+    };
+    $scope.editExam = function (type, level, drills) {
+        shared.examData = drills;
+        var url = $scope.exams[0].url;
+        if (type == 'exam2') {
+            url = $scope.exams[1+$scope.$eval(level)].url;
+        }
+        $location.path(url);
     };
     $scope.getBestScore = function (type) {
         var score = 0;

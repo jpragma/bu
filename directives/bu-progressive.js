@@ -9,7 +9,8 @@ buApp.directive('buProgressive', [function () {
             minPos: '@',
             numOfShots: '@',
             maxScore: '@',
-            score: '='
+            score: '=',
+            data: '='
         },
         link: function($scope, $element, $attrs) {
             $scope.startPos = $scope.$eval($attrs.startPos) || 4;
@@ -17,10 +18,15 @@ buApp.directive('buProgressive', [function () {
             $scope.minPos = $scope.$eval($attrs.minPos) || 1;
             $scope.numOfShots = $scope.$eval($attrs.numOfShots) || 10;
             $scope.maxScore = $scope.$eval($attrs.maxScore) || 10;
-            $scope.shots = [];
-            for (var i=0; i<$scope.numOfShots; i++) {
-                $scope.shots.push({result:null, pos:null});
+            if ($scope.data) {
+                $scope.shots = $scope.data;
+            } else {
+                $scope.shots = [];
+                for (var i=0; i<$scope.numOfShots; i++) {
+                    $scope.shots.push({result:null, pos:null});
+                }
             }
+            $scope.data = $scope.shots;
 
             $scope.displayShot = function (shot) {
                 if (shot.result == null) return null;

@@ -9,7 +9,8 @@ buApp.directive('buBoolean', [function () {
             failureTitle: '@',
             numOfShots: '@',
             triesPerShot: '@',
-            score: '='
+            score: '=',
+            data: '='
         },
         link: function($scope, $element, $attrs) {
             $scope.shotTitle = $scope.$eval($attrs.shotTitle) || 'Shot';
@@ -17,15 +18,20 @@ buApp.directive('buBoolean', [function () {
             $scope.failureTitle = $scope.$eval($attrs.failureTitle) || 'Failure';
             $scope.numOfShots = $scope.$eval($attrs.numOfShots) || 10;
             $scope.triesPerShot = $scope.$eval($attrs.triesPerShot) || 1;
+            if ($scope.data) {
+                $scope.shots = $scope.data;
+            } else {
+                $scope.shots = [];
+                var shotsNum = $scope.numOfShots * $scope.triesPerShot;
+                for (var i=0; i<shotsNum; i++) {
+                    $scope.shots.push(null);
+                }
+            }
+            $scope.data = $scope.shots;
 
             $scope.range = function (n) {
                 return new Array($scope.$eval(n));
             };
-            var shotsNum = $scope.numOfShots * $scope.triesPerShot;
-            $scope.shots = [];
-            for (var i=0; i<shotsNum; i++) {
-                $scope.shots.push(null);
-            }
 
             $scope.displayShot = function (input, reverse) {
                 if (input == null) return null;

@@ -59,3 +59,8 @@ buApp.factory('storage', ['localStorageService', function (storage) {
 }]);
 buApp.exam2levels = ['Bachelors', 'Masters', 'Doctorate'];
 
+buApp.factory('shared', function () {
+    return {
+        examData: null
+    };
+});

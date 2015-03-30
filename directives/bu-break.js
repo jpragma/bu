@@ -5,16 +5,21 @@ buApp.directive('buBreak', [function () {
         replace: true,
         scope: {
             numOfAttempts: '@',
-            score: '='
+            score: '=',
+            data: '='
         },
         link: function($scope, $element, $attrs) {
             $scope.numOfAttempts = $scope.$eval($attrs.numOfAttempts) || 3;
-
-            $scope.attempts = [];
-            for (var i=0; i<$scope.numOfAttempts; i++) {
-                var points = new Array(5);
-                $scope.attempts.push(points);
+            if ($scope.data) {
+                $scope.attempts = $scope.data;
+            } else {
+                $scope.attempts = [];
+                for (var i=0; i<$scope.numOfAttempts; i++) {
+                    var points = new Array(5);
+                    $scope.attempts.push(points);
+                }
             }
+            $scope.data = $scope.attempts;
 
             $scope.displayPoint = function (input) {
                 if (input == null) return '\u00A0'; // &nbsp

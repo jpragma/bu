@@ -41,7 +41,7 @@
         </tr>
         <tr ng-repeat="h in history | filter: {type:'exam1'}">
             <td><input type="checkbox" value="{{h.key}}" ng-checked="inSelection(h.key)" ng-click="toggleSelection(h.key)"></td>
-            <td>{{h.date | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td><a href="" ng-click="editExam('exam1', null, h.drills)">{{h.date | date:'yyyy-MM-dd HH:mm'}}</a></td>
             <td>{{getDrillScore(h.drills, 'f1')}}</td>
             <td>{{getDrillScore(h.drills, 'f2')}}</td>
             <td>{{getDrillScore(h.drills, 'f3')}}</td>
@@ -76,7 +76,7 @@
         </tr>
         <tr ng-repeat="h in history  | filter: {type:'exam2'}">
             <td><input type="checkbox" value="{{h.key}}" ng-checked="inSelection(h.key)" ng-click="toggleSelection(h.key)"></td>
-            <td>{{h.date | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td><a href="" ng-click="editExam('exam2', h.level, h.drills)">{{h.date | date:'yyyy-MM-dd HH:mm'}}</a></td>
             <td>{{getLevelName(h.level)}}</td>
             <td>{{getDrillScore(h.drills, 's1')}}</td>
             <td>{{getDrillScore(h.drills, 's2')}}</td>

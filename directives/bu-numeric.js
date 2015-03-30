@@ -11,7 +11,8 @@ buApp.directive('buNumeric', [function () {
             sumNumber: '@',
             maxScore: '@',
             maxPerAttempt: '@',
-            score: '='
+            score: '=',
+            data: '='
         },
         link: function($scope, $element, $attrs) {
             $scope.title = $scope.$eval($attrs.title) || 'Attempt';
@@ -21,11 +22,16 @@ buApp.directive('buNumeric', [function () {
             $scope.sumNumber = $scope.$eval($attrs.sumNumber) || 1;
             $scope.maxScore = $scope.$eval($attrs.maxScore) || 10;
             $scope.maxPerAttempt = $scope.$eval($attrs.maxPerAttempt) || $scope.maxScore;
-
-            $scope.attempts = [];
-            for (var i=0; i<$scope.numOfAttempts; i++) {
-                $scope.attempts.push(null);
+            if ($scope.data) {
+                $scope.attempts = $scope.data;
+            } else {
+                $scope.attempts = [];
+                for (var i=0; i<$scope.numOfAttempts; i++) {
+                    $scope.attempts.push(null);
+                }
             }
+            $scope.data = $scope.attempts;
+
             $scope.$watchCollection('attempts', function (newVals, oldVals) {
                 $scope.recalcScore();
             });

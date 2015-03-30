@@ -14,28 +14,28 @@
         <tr ng-repeat="drill in drills | filter:{type:'progressive'}">
             <td>{{drill.id}}</td>
             <td>{{drill.name}}</td>
-            <td><bu-progressive score="drill.score"></bu-progressive></td>
+            <td><bu-progressive score="drill.score" data="drill.data"></bu-progressive></td>
             <td>{{drill.score}}</td>
         </tr>
 
         <tr>
             <td>{{drills[5].id}}</td>
             <td>{{drills[5].name}}</td> <!--Potting-->
-            <td><bu-boolean num-of-shots="10" tries-per-shot="1" score="drills[5].score"></bu-boolean></td>
+            <td><bu-boolean num-of-shots="10" tries-per-shot="1" score="drills[5].score" data="drills[5].data"></bu-boolean></td>
             <td>{{drills[5].score}}</td>
         </tr>
 
         <tr>
             <td>{{drills[6].id}}</td>
             <td>{{drills[6].name}}</td> <!--Wagon wheel-->
-            <td><bu-boolean num-of-shots="10" tries-per-shot="2" score="drills[6].score"></bu-boolean></td>
+            <td><bu-boolean num-of-shots="10" tries-per-shot="2" score="drills[6].score" data="drills[6].data"></bu-boolean></td>
             <td>{{drills[6].score}}</td>
         </tr>
 
         <tr>
             <td>{{drills[7].id}}</td>
             <td>{{drills[7].name}}</td> <!--Target-->
-            <td><bu-boolean num-of-shots="5" tries-per-shot="4" score="drills[7].score"></bu-boolean></td>
+            <td><bu-boolean num-of-shots="5" tries-per-shot="4" score="drills[7].score" data="drills[7].data"></bu-boolean></td>
             <td>{{drills[7].score}}</td>
         </tr>
 

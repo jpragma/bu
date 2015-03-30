@@ -1,15 +1,19 @@
-buApp.controller('exam1Controller', ['$scope', '$location', 'storage', function($scope, $location, storage) {
+buApp.controller('exam1Controller', ['$scope', '$location', 'storage', 'shared', function($scope, $location, storage, shared) {
     $scope.examDate = new Date().getTime();
-    $scope.drills = [
-        {id: 'F1', name: 'Cut', score: 0, type:'progressive'},
-        {id: 'F2', name: 'Stop', score: 0, type:'progressive'},
-        {id: 'F3', name: 'Follow', score: 0, type:'progressive'},
-        {id: 'F4', name: 'Draw', score: 0, type:'progressive'},
-        {id: 'F5', name: 'Stan', score: 0, type:'progressive'},
-        {id: 'F6', name: 'Potting', score: 0, type:'simple'},
-        {id: 'F7', name: 'Wagon wheel', score: 0, type:'simple'},
-        {id: 'F8', name: 'Target', score: 0, type:'simple'}
-    ];
+    if (shared.examData) {
+        $scope.drills = shared.examData;
+    } else {
+        $scope.drills = [
+            {id: 'F1', name: 'Cut', score: 0, data: null, type: 'progressive'},
+            {id: 'F2', name: 'Stop', score: 0, data: null, type: 'progressive'},
+            {id: 'F3', name: 'Follow', score: 0, data: null, type: 'progressive'},
+            {id: 'F4', name: 'Draw', score: 0, data: null, type: 'progressive'},
+            {id: 'F5', name: 'Stan', score: 0, data: null, type: 'progressive'},
+            {id: 'F6', name: 'Potting', score: 0, data: null, type: 'simple'},
+            {id: 'F7', name: 'Wagon wheel', score: 0, data: null, type: 'simple'},
+            {id: 'F8', name: 'Target', score: 0, data: null, type: 'simple'}
+        ];
+    }
     $scope.exam2Placement = [
         {level: 'Bachelors', minScore: 0, maxScore: 49},
         {level: 'Masters', minScore: 50, maxScore: 69},
