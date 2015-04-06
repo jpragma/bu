@@ -101,5 +101,20 @@ buApp.controller('homeController', ['$scope', '$location', 'storage', 'shared', 
         if (idx >= 0)
             $scope.diploma = diplomaTable[idx].name;
     };
+    $scope.exportSelected = function () {
+        var exportData = [];
+        for (var i = 0; i < $scope.history.length; i++) {
+            var examData = $scope.history[i];
+            if ($scope.inSelection(examData.key)) {
+                exportData.push(examData);
+            }
+        }
+        shared.exportData = exportData;
+        $location.path('/rawdata');
+    };
+    $scope.goToImport = function () {
+        shared.exportData = null;
+        $location.path('/rawdata');
+    };
 }]);
 

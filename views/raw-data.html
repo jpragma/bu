@@ -1,0 +1,6 @@
+<div ng-controller="rawDataController" class="rawData">
+    <h3>{{exporting ? 'Export' : 'Import'}} data</h3>
+    <button ng-show="!exporting" ng-click="importData()">Import</button>
+    <textarea ng-model="rawdata">
+    </textarea>
+</div>

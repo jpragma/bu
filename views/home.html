@@ -15,8 +15,10 @@
     </div>
     <h3>History</h3>
     <div>
-        <a href="" ng-click="deleteSelected()" ng-show="history.length > 0">Clear</a>
-        <a href="" ng-click="deleteAll()" ng-show="history.length > 0">Clear All</a>
+        <button ng-click="deleteAll()" ng-show="history.length > 0">Clear All</button>
+        <button ng-click="deleteSelected()" ng-show="selection.length > 0">Clear</button>
+        <button ng-click="exportSelected()" ng-show="selection.length > 0">Export</button>
+        <button ng-click="goToImport()">Import</button>
     </div>
     <div style="margin-bottom: 10px">
         Best combined score is {{bestScore}}

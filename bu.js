@@ -27,6 +27,7 @@ buApp.config(['$routeProvider',
         $routeProvider.when('/home', {templateUrl: 'views/home.html'}).
             when('/exam1', {templateUrl: 'views/exam1.html'}).
             when('/exam2/:level?', {templateUrl: 'views/exam2.html'}).
+            when('/rawdata', {templateUrl: 'views/raw-data.html'}).
             otherwise({redirectTo: '/home'});
     }
 ]);
